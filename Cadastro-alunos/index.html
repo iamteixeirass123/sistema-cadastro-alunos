@@ -1,0 +1,222 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cadastro de Alunos</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f4f8;
+            margin: 0;
+            padding: 30px 15px;
+            color: #263238;
+        }
+
+        .container {
+            max-width: 650px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+        }
+
+        h1 {
+            text-align: center;
+            color: #25476a;
+            margin-top: 0;
+        }
+
+        .descricao {
+            text-align: center;
+            color: #64748b;
+            margin-bottom: 25px;
+        }
+
+        .campo {
+            margin-bottom: 18px;
+        }
+
+        label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 7px;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 12px;
+            border: 2px solid #d5dce5;
+            border-radius: 6px;
+            font-size: 16px;
+            outline: none;
+            transition: border-color 0.2s, background-color 0.2s;
+        }
+
+        /* Aparência do campo selecionado */
+        input:focus,
+        select:focus {
+            border-color: #2878d0;
+            background-color: #eef6ff;
+        }
+
+        /* Aparência dos campos validados */
+        .campo-valido {
+            border-color: #239653 !important;
+            background-color: #f0fff4 !important;
+        }
+
+        .campo-invalido {
+            border-color: #d93025 !important;
+            background-color: #fff1f0 !important;
+        }
+
+        .mensagem {
+            display: block;
+            margin-top: 5px;
+            font-size: 13px;
+            min-height: 16px;
+        }
+
+        .mensagem.erro {
+            color: #d93025;
+        }
+
+        .mensagem.sucesso {
+            color: #188447;
+        }
+
+        button {
+            width: 100%;
+            padding: 13px;
+            border: none;
+            border-radius: 6px;
+            background-color: #25476a;
+            color: white;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+
+        button:hover {
+            background-color: #17334f;
+        }
+
+        .resultado {
+            margin-top: 28px;
+        }
+
+        .resultado h2 {
+            color: #25476a;
+            font-size: 21px;
+        }
+
+        #listaAlunos {
+            padding-left: 25px;
+        }
+
+        #listaAlunos li {
+            background-color: #f4f7fb;
+            margin-bottom: 10px;
+            padding: 12px;
+            border-radius: 6px;
+            overflow-wrap: anywhere;
+        }
+
+        #mensagemGeral {
+            margin-top: 15px;
+            text-align: center;
+            font-weight: bold;
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <main class="container">
+        <h1>Cadastro de Alunos</h1>
+
+        <p class="descricao">
+            Preencha os dados para cadastrar um novo aluno.
+        </p>
+
+        <form id="formCadastro" novalidate>
+            <div class="campo">
+                <label for="nome">Nome completo:</label>
+
+                <input
+                    type="text"
+                    id="nome"
+                    name="nome"
+                    placeholder="Digite o nome completo"
+                    autocomplete="name"
+                    required
+                >
+
+                <small id="erroNome" class="mensagem"></small>
+            </div>
+
+            <div class="campo">
+                <label for="email">E-mail:</label>
+
+                <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    placeholder="exemplo@email.com"
+                    autocomplete="email"
+                    required
+                >
+
+                <small id="erroEmail" class="mensagem"></small>
+            </div>
+
+            <div class="campo">
+                <label for="curso">Curso:</label>
+
+                <select id="curso" name="curso" required>
+                    <option value="">Selecione um curso</option>
+                    <option value="Nutrição">Nutrição</option>
+                    <option value="Análise e Desenvolvimento de Sistemas">
+                        Análise e Desenvolvimento de Sistemas
+                    </option>
+                    <option value="Administração">Administração</option>
+                    <option value="Enfermagem">Enfermagem</option>
+                    <option value="Direito">Direito</option>
+                    <option value="Outro">Outro</option>
+                </select>
+
+                <small id="erroCurso" class="mensagem"></small>
+            </div>
+
+            <button type="submit">Cadastrar aluno</button>
+
+            <p id="mensagemGeral" aria-live="polite"></p>
+        </form>
+
+        <section class="resultado">
+            <h2>Alunos cadastrados</h2>
+
+            <ul id="listaAlunos">
+                <!-- Os alunos serão adicionados pelo JavaScript -->
+            </ul>
+        </section>
+    </main>
+
+    <script src="script.js" defer></script>
+</body>
+</html>
